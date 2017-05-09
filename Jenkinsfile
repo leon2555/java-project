@@ -18,6 +18,11 @@ pipeline {
 			steps {
 				sh 'ant -f build.xml -v'
 			}
+			post {
+				success {
+					archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
+				}
+			}
 		}
 		stage('deploy') {
 			agent {
@@ -32,7 +37,7 @@ pipeline {
 				label 'CentOS'
 			}
 			steps {
-				sh "wget https://leon25551.mylabserver.com/rectangle/all/rectablge_${env.BUILD_NUMBER}.jar"
+				sh "wget http://leon25551.mylabserver.com/rectangle/all/rectangle_${env.BUILD_NUMBER}.jar"
 				sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
 			}
 		}
