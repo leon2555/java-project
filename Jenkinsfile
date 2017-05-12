@@ -96,20 +96,20 @@ pipeline {
 						subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Development Promoted to master!",
 						body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Development Promoted to master!":</p>
 	        			<p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-	        			to: "leon2555@gmail.com"
+	        			to: "leon@tr8nhub.com"
 					)
 				}
 			}
 		}
 	}
-	
+
 	post {
 		failure {
 			emailext(
 				subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Failed!",
 				body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed!":</p>
         		<p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-        		to: "leon2555@gmail.com"
+        		to: "leon@tr8nhub.com"
 			)
 		}
 	}
