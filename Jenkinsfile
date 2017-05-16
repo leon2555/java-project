@@ -9,7 +9,7 @@ pipeline {
 		stage('Say Hello') {
 			agent any
 			steps {
-				sayHello 'Awsome Leon'
+				sayhello 'Awsome Leon'
 			}
 		}
 		stage('Unit test') {
