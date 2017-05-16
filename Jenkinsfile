@@ -12,6 +12,16 @@ pipeline {
 				sayhello 'Awsome Leon'
 			}
 		}
+		stage('Git Information') {
+			agent any
+			steps {
+				echo "my branch ${env.BRANCH_NAME}"
+				script {
+					def myLib = new leonorg.git.gitstuff();
+					echo "My commit: ${myLib.gitCommit("${env.WORKSPACE}/.git")}"
+				}
+			}
+		}
 		stage('Unit test') {
 			agent {
 				label 'apache'
